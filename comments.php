@@ -8,8 +8,8 @@
  * located in the functions.php file.
  *
  * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
+ * @subpackage 	Chimpress
+ * @since 		Chimpress 1.0
  */
 ?>
 <div id="comments">
@@ -42,9 +42,9 @@
 		 */
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-	
+
 	<p>Comments are closed</p>
-	
+
 	<?php endif; ?>
 
 	<?php comment_form(); ?>

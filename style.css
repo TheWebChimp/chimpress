@@ -1,11 +1,11 @@
 /*
-Theme Name: 	Starkers
-Theme URI: 		http://viewportindustries.com/products/starkers
-Description: 	The totally nude Wordpress theme!
-Version: 		4.0
-Author: 		Elliot Jay Stocks & Keir Whitaker
-Author URI: 	http://viewportindustries.com
-Tags: 			starkers, naked, clean, basic
+Theme Name: 	ChimPress
+Theme URI: 		http://thewebchi.mp
+Description: 	WebChimp Starter Theme (Based on Starkers)
+Version: 		1.0
+Author: 		Rodrigo Tejero
+Author URI: 	http://tets.com.mx
+Tags: 			starkers, naked, clean, basic, webchimp
 */
 
 /*
@@ -14,15 +14,16 @@ CONTENTS:
 
 01 Sensible defaults
 02 Typography
-03 Media queries 
+03 Media queries
 ===========================
 */
 
-/* ---------------------------------------------------------------------------------------------------------- 
+/* ----------------------------------------------------------------------------------------------------------
 01 Sensible defaults ----------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
 
 @import "css/reset.css";
+@import "css/site.css";
 
 div,
 article,
@@ -36,7 +37,7 @@ body 				{ background:#fff; /* Don't forget to style your body to avoid user ove
 ::-moz-selection 	{ background:#ff0; color:#333; }
 ::selection 		{ background:#ff0; color:#333; }
 
-/* ---------------------------------------------------------------------------------------------------------- 
+/* ----------------------------------------------------------------------------------------------------------
 02 Typography -----------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
 /*
@@ -54,14 +55,14 @@ body,
 input,
 textarea 			{ /* We strongly recommend you declare font-weight using numerical values, but check to see which weights you're exporting first */ }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 					{ font-weight:bold; /* This helps to identify headings at the initial build stage, but you should write something more precise later on */ }
 
-/* ---------------------------------------------------------------------------------------------------------- 
+/* ----------------------------------------------------------------------------------------------------------
 03 Media queries (using a mobile-first approach) ------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
 
