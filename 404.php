@@ -11,6 +11,8 @@
 ?>
 <?php Chimpress_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
-<h2>Page not found</h2>
+<section>
+	<h2>Page not found</h2>
+</section>
 
 <?php Chimpress_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

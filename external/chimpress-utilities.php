@@ -24,7 +24,32 @@
 		print( '</pre>' );
 	}
 
+	/**
+	 * Print html for image from images folder
+	 *
+	 * @param 	array
+	 * @return 	void
+	 * @author 	Keir Whitaker
+	 **/
+	function img($path = '', $echo = true){
+
+		Chimpress_Utilities::img($path, $echo);
+	}
+
 	class Chimpress_Utilities {
+
+		/**
+		 * Print html for image from images folder
+		 *
+		 * @param 	array
+		 * @return 	void
+		 * @author 	Keir Whitaker
+		 **/
+		function img($path = '', $echo = true){
+
+			if($echo)	echo get_bloginfo('template_url') . "/images/$path";
+			else		return get_bloginfo('template_url') . "/images/$path";
+		}
 
 		/**
 		 * Simple wrapper for native get_template_part()

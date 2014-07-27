@@ -3,6 +3,6 @@
 	</div><!-- #wrapper -->
 	<?php endif; ?>
 
-	<footer>
-		&copy; <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.
+	<footer class="site-footer">
+		<p class="site-footer__copyright">&copy; <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
 	</footer>

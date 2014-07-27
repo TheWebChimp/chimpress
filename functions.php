@@ -47,5 +47,8 @@
 
 		wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
 		wp_enqueue_style( 'screen' );
+
+		wp_register_style( 'site', get_template_directory_uri().'/site.css', '', '', 'screen' );
+		wp_enqueue_style( 'site' );
 	}
 ?>
