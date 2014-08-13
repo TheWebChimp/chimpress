@@ -14,7 +14,7 @@
 	============================================================================================= */
 
 	require_once( 'external/chimpress-utilities.php' );
-	require_once( 'external/costumization.php' );
+	require_once( 'external/customization.php' );
 	require_once( 'external/ajax.php' );
 
 	/* =============================================================================================
