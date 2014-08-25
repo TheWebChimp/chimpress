@@ -15,6 +15,7 @@
 
 	require_once( 'external/chimpress-utilities.php' );
 	require_once( 'external/customization.php' );
+	require_once( 'external/shortcodes.php' );
 	require_once( 'external/ajax.php' );
 
 	/* =============================================================================================
@@ -47,6 +48,9 @@
 
 		wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
 		wp_enqueue_style( 'screen' );
+
+		wp_register_style( 'boilerplate', get_stylesheet_directory_uri().'/css/boilerplate.css', '', '', 'screen' );
+		wp_enqueue_style( 'boilerplate' );
 
 		wp_register_style( 'site', get_template_directory_uri().'/site.css', '', '', 'screen' );
 		wp_enqueue_style( 'site' );
