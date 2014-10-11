@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Form Notification Template</title>
+	<style>
+		body{
+
+			background: #333;
+			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			padding-top: 20px;
+		}
+
+		#notification{
+
+			min-height: 300px;
+			background: white;
+			width: 600px;
+			margin: 20px auto;
+		}
+
+		.header{
+
+			height: 150px;
+			background: white;
+		}
+
+		.header{
+
+			border: 0;
+			display: block;
+			vertical-align: baseline;
+		}
+
+		.content{
+
+			min-height: 100px;
+			padding: 10px;
+		}
+
+		.content .intro{
+
+			font-size: 15px;
+			color: #515151;
+		}
+
+		.content table{
+
+			font-size: 12px;
+			border-collapse: collapse;
+			width: 100%;
+			color: #515151;
+		}
+
+		.content table th{
+
+			background: inherit;
+			padding: 10px;
+			width: 80px;
+			text-align: left;
+			border-right: 1px solid #002A5C;
+		}
+
+		.content table td{
+
+			background: inherit;
+			padding: 10px;
+			text-align: left;
+		}
+
+		.content table tr.even{
+
+			background: #E0E4CC;
+		}
+
+		.footer{
+
+			padding: 10px 0;
+			height: 14px;
+			background: #333;
+		}
+
+		.footer p{
+
+			margin: 0;
+			padding: 0;
+			text-align: right;
+			font-size: 11px;
+			color: white;
+		}
+
+		.footer p a{
+
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="notification">
+		<div class="header">
+			<img src="cid:header" alt="Formulario de contacto">
+		</div>
+		<div class="content">
+			<h2 class="intro">Hola, un nuevo usuario te ha contactado a través de tu formulario de contacto en <strong>%referrer%</strong>.</h2>
+			<table>
+				%contact-table%
+			</table>
+		</div>
+		<div class="footer">
+			<p>powered by <a href="http://www.thewebchi.mp" target="_blank">WebChimp</a></p>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -11,31 +11,6 @@
 	 *
 	 */
 
-	/**
-	 * Print a pre formatted array to the browser - very useful for debugging
-	 *
-	 * @param 	array
-	 * @return 	void
-	 * @author 	Keir Whitaker
-	 **/
-	function print_a( $a ) {
-		print( '<pre>' );
-		print_r( $a );
-		print( '</pre>' );
-	}
-
-	/**
-	 * Print html for image from images folder
-	 *
-	 * @param 	array
-	 * @return 	void
-	 * @author 	Keir Whitaker
-	 **/
-	function img($path = '', $echo = true){
-
-		Chimpress_Utilities::img($path, $echo);
-	}
-
 	class Chimpress_Utilities {
 
 		/**
@@ -114,5 +89,38 @@
 			$term = get_term_by( 'name', $cat_name, 'category' );
 			return $term->term_id;
 		}
+	}
+
+	/* 	    ______                 __  _
+		   / ____/_  ______  _____/ /_(_)___  ____  _____
+		  / /_  / / / / __ \/ ___/ __/ / __ \/ __ \/ ___/
+		 / __/ / /_/ / / / / /__/ /_/ / /_/ / / / (__  )
+		/_/    \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/
+		                                                  */
+
+
+	/**
+	 * Print a pre formatted array to the browser - very useful for debugging
+	 *
+	 * @param 	array
+	 * @return 	void
+	 * @author 	Keir Whitaker
+	 **/
+	function print_a( $a ) {
+		print( '<pre>' );
+		print_r( $a );
+		print( '</pre>' );
+	}
+
+	/**
+	 * Print html for image from images folder
+	 *
+	 * @param 	array
+	 * @return 	void
+	 * @author 	Keir Whitaker
+	 **/
+	function img($path = '', $echo = true){
+
+		Chimpress_Utilities::img($path, $echo);
 	}
 ?>

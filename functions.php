@@ -39,13 +39,23 @@
 	 * Add scripts via wp_head()
 	 *
 	 * @return void
-	 * @author Keir Whitaker
+	 * @author Rodrigo Tejero
 	 */
 
 	function chimpress_script_enqueuer() {
-		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array( 'jquery' ) );
-		wp_enqueue_script( 'site' );
 
+		#CSS =======================================================================================
+
+		//Chimp Plugins
+		wp_register_style( 'jquery.alert', get_stylesheet_directory_uri().'/css/jquery.alert.css', '', '', 'screen' );
+		wp_enqueue_style( 'jquery.alert' );
+
+		//Other Plugins
+
+		//Fonts
+		//Fonts go here
+
+		//Structure
 		wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
 		wp_enqueue_style( 'screen' );
 
@@ -54,5 +64,25 @@
 
 		wp_register_style( 'site', get_template_directory_uri().'/site.css', '', '', 'screen' );
 		wp_enqueue_style( 'site' );
+
+		#JS ========================================================================================
+
+		//Chimp Plugins
+		wp_register_script( 'jquery.alert', get_template_directory_uri().'/js/jquery.alert.min.js', array( 'jquery' ) );
+		wp_register_script( 'jquery.loading', get_template_directory_uri().'/js/jquery.loading.min.js', array( 'jquery' ) );
+		wp_register_script( 'jquery.validator3', get_template_directory_uri().'/js/jquery.validator3.min.js', array( 'jquery' ) );
+
+		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(
+
+			//Plugins
+			'jquery',
+			'jquery-form',
+
+			//Chimp Plugins
+			'jquery.alert',
+			'jquery.loading',
+			'jquery.validator3'
+		));
+		wp_enqueue_script( 'site' );
 	}
 ?>
