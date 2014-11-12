@@ -54,13 +54,20 @@
 
 		//Fonts
 		wp_register_style( 'google.font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css', '', '', 'screen' );
+		wp_enqueue_style( 'google.font-awesome' );
+
 		wp_register_style( 'google.open-sans', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,800italic,400italic,300italic|Open+Sans+Condensed:300,700,300italic', '', '', 'screen' );
+		wp_enqueue_style( 'google.open-sans' );
+
 		wp_register_style( 'google.oswald', '//fonts.googleapis.com/css?family=Oswald:400,700,300', '', '', 'screen' );
+		wp_enqueue_style( 'google.oswald' );
+
 		wp_register_style( 'google.lato', '//fonts.googleapis.com/css?family=Lato:400,300,700,900', '', '', 'screen' );
+		wp_enqueue_style( 'google.lato' );
 
 		//Structure
-		wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
-		wp_enqueue_style( 'screen' );
+		wp_register_style( 'style', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
+		wp_enqueue_style( 'style' );
 
 		wp_register_style( 'boilerplate', get_stylesheet_directory_uri().'/css/boilerplate.css', '', '', 'screen' );
 		wp_enqueue_style( 'boilerplate' );
