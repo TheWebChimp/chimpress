@@ -155,3 +155,35 @@
 	}
 
 	add_action('wp_head', 'wc_ajaxurl');
+
+	/* =============================================================================================
+	Facebook OG Metas
+	============================================================================================= */
+	//Adding the Open Graph in the Language Attributes
+	function add_opengraph_doctype( $output ) {
+		return $output . ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';
+	}
+	add_filter('language_attributes', 'add_opengraph_doctype');
+
+	//Lets add Open Graph Meta Info
+	function wc_fbog() {
+		global $post;
+		if (!is_singular()) return;
+
+		echo '<meta property="fb:admins" content="YOUR USER ID">' . "\n";
+		echo '<meta property="og:title" content="' . get_the_title() . '">' . "\n";
+		echo '<meta property="og:type" content="article">' . "\n";
+		echo '<meta property="og:url" content="' . get_permalink() . '">';
+		echo '<meta property="og:site_name" content="' . get_bloginfo( 'name' ) . '">' . "\n";
+
+		if(!has_post_thumbnail( $post->ID )) {
+			$default_image = img('default-image.jpg', false);
+			echo '<meta property="og:image" content="' . $default_image . '">' . "\n";
+		}
+
+		else{
+			$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+			echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '">' . "\n";
+		}
+	}
+	add_action( 'wp_head', 'wc_fbog', 5 );
