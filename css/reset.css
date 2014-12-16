@@ -1,179 +1,113 @@
-
 /**
- * reset.css
- *
- * Adapted from:
- * Normalize.css by Nicolas Gallagher and Jonathan Neal: https://github.com/necolas/normalize.css/
- * HTML5 boilerplate: http://html5boilerplate.com/
- * HTML5 Doctor Reset by Eric Meyer and Richard Clark: html5doctor.com/html-5-reset-stylesheet/
- *
- * Modified by Elliot Jay Stocks
- */
+* html5doctor.com Reset Stylesheet v1.6.1 (http: //html5doctor.com/html-5-reset-stylesheet/)
+* Richard Clark (http: //richclarkdesign.com)
+* http: //cssreset.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video 													{ margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; }
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section 												{ display: block; }
+body {
 
-audio,
-canvas,
-video 													{ display: inline-block; *display: inline; *zoom: 1; }
+	line-height: 1;
+}
 
-audio:not([controls]) 									{ display: none; }
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
 
-[hidden] 												{ display: none; }
+	display: block;
+}
 
-html 													{ font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+nav ul {
 
-body 													{ margin: 0; }
+	list-style: none;
+}
 
-h1, h2, h3, h4, h5, h6 { font-weight:normal; }
+blockquote, q {
 
-a		 												{ color:blue; }
+	quotes: none;
+}
 
-a:focus 												{ outline: thin dotted; }
+blockquote: before, blockquote: after,
+q: before, q: after {
 
-li														{ list-style:none; }
+	content: '';
+	content: none;
+}
 
-abbr[title] 											{ border-bottom:none; }
+a {
 
-b,
-strong 													{ font-weight: 700; }
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
 
-i,
-em,
-dfn 													{ font-style: italic; }
+/* change colours to suit your needs */
+ins {
 
-hr 														{ display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
 
-ins 													{ background: #ff9; color: #000; text-decoration: none; }
+/* change colours to suit your needs */
+mark {
 
-mark 	 												{ background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
 
-pre,
-code,
-kbd,
-samp 													{ font-family: monospace, monospace; _font-family: 'courier new', monospace; }
+del {
 
-pre 													{ white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+	text-decoration:  line-through;
+}
 
-q 														{ quotes: none; }
+abbr[title], dfn[title] {
 
-q:before,
-q:after 												{ content: ""; content: none; }
+	border-bottom: 1px dotted;
+	cursor: help;
+}
 
-small 													{ font-size: 85%; }
+table {
 
-sub,
-sup 													{ font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
-sup 													{ top: -0.5em; }
+/* change border colour to suit your needs */
+hr {
 
-sub 													{ bottom: -0.25em; }
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
 
-img 													{ border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+input, select {
 
-label 													{ cursor: pointer; }
-
-input,
-select,
-textarea 												{ font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
-
-button,
-input 													{ line-height: normal; *overflow: visible; }
-
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] 									{ cursor: pointer; -webkit-appearance: button; }
-
-input[type="checkbox"],
-input[type="radio"] 									{ box-sizing: border-box; }
-
-input[type="search"] 									{ -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
-input[type="search"]::-webkit-search-decoration			{ -webkit-appearance: none; }
-
-button::-moz-focus-inner,
-input::-moz-focus-inner 								{ border: 0; padding: 0; }
-
-textarea 												{ overflow: auto; vertical-align: top; resize: vertical; }
-
-table 													{ border-collapse: collapse; border-spacing: 0; }
-
-td 														{ vertical-align: top; }
+	vertical-align: middle;
+}
