@@ -103,6 +103,17 @@
 
 	add_action('admin_menu', 'wc_remove_menus');
 
+	add_filter('acf/settings/show_admin', 'my_acf_show_admin');
+	function my_acf_show_admin( $show ) {
+
+		$user = wp_get_current_user();
+		if ($user->ID != 1) {
+			return false;
+		}
+
+		else return true;
+	}
+
 	/* =============================================================================================
 	File upload special chars sanitization
 	============================================================================================= */
@@ -159,10 +170,11 @@
 	/* =============================================================================================
 	Facebook OG Metas
 	============================================================================================= */
-	//Adding the Open Graph in the Language Attributes
+
 	function add_opengraph_doctype( $output ) {
 		return $output . ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';
 	}
+
 	add_filter('language_attributes', 'add_opengraph_doctype');
 
 	//Lets add Open Graph Meta Info
@@ -187,3 +199,12 @@
 		}
 	}
 	add_action( 'wp_head', 'wc_fbog', 5 );
+
+	/* =============================================================================================
+	Add ACF Options Page
+	============================================================================================= */
+
+	if( function_exists('acf_add_options_page') ) {
+		acf_add_options_page();
+	}
+?>
