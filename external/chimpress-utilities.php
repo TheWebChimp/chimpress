@@ -20,7 +20,7 @@
 		 * @return 	void
 		 * @author 	Keir Whitaker
 		 **/
-		function img($path = '', $echo = true){
+		public static function img($path = '', $echo = true){
 
 			if($echo)	echo get_bloginfo('template_url') . "/images/$path";
 			else		return get_bloginfo('template_url') . "/images/$path";
