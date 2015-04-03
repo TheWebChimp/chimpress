@@ -14,7 +14,7 @@
  * @since 		Chimpress 1.0
  */
 ?>
-<?php Chimpress_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php $site->getParts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
 <section>
 	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -23,4 +23,4 @@
 	<?php endwhile; ?>
 </section>
 
-<?php Chimpress_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+<?php $site->getParts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
