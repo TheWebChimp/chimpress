@@ -14,16 +14,86 @@
 	class Chimpress_Utilities {
 
 		/**
-		 * Print html for image from images folder
-		 *
-		 * @param 	array
-		 * @return 	void
-		 * @author 	Keir Whitaker
-		 **/
-		public static function img($path = '', $echo = true){
+		 * Get a well formed url to the specified image file and optionally echo it
+		 * @param  string  $filename Image file name (e.g. 'logo.png')
+		 * @param  boolean $echo     Whether to print out the resulting url or not
+		 * @return string            The resulting url
+		 */
+		function img($filename, $echo = true) {
+			$ret = get_bloginfo('template_url') . "/images/{$filename}";
+			if ($echo) {
+				echo $ret;
+			}
+			return $ret;
+		}
 
-			if($echo)	echo get_bloginfo('template_url') . "/images/$path";
-			else		return get_bloginfo('template_url') . "/images/$path";
+		/**
+		 * Get base folder
+		 * @param  string  $path Path to append
+		 * @param  boolean $echo Whether to print the resulting string or not
+		 * @return string        The well-formed path
+		 */
+		function baseDir($path = '', $echo = false) {
+			$ret = get_template_directory();
+			if ($echo) {
+				echo $ret;
+			}
+			return $ret;
+		}
+
+		/**
+		 * Get a well formed url to the specified route or page slug
+		 * @param  string  $route    Route or page slug
+		 * @param  boolean $echo     Whether to print out the resulting url or not
+		 * @param  string  $protocol Protocol to override default http (https, ftp, etc)
+		 * @return string            The resulting url
+		 */
+		function urlTo($route, $echo = false, $protocol = null) {
+			$url = home_url( $path, $protocol );
+			if ($echo) {
+				echo $url;
+			}
+			return $url;
+		}
+
+		/**
+		 * Get the site name
+		 * @param  boolean $echo Print the result?
+		 * @return string        Site name
+		 */
+		function getSiteTitle($echo = false) {
+			$ret = get_bloginfo('name');
+			if ($echo) {
+				echo $ret;
+			}
+			return $ret;
+		}
+
+		/**
+		 * Display a generic error message
+		 * @param  string $message The error message
+		 */
+		function errorMessage($message) {
+			$markup = '<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>{$title}</title> <style> body { font-family: sans-serif; font-size: 14px; background: #F8F8F8; } div.center { width: 960px; margin: 0 auto; padding: 1px 0; } p.message { padding: 15px; border: 1px solid #DDD; background: #F1F1F1; color: #656565; } </style> </head> <body> <div class="center"> <p class="message">{$message}</p> </div> </body> </html>';
+			$markup = str_replace('{$title}', $this->getSiteTitle(), $markup);
+			$markup = str_replace('{$message}', $message, $markup);
+			echo $markup;
+			exit;
+		}
+
+		/**
+		 * Load the specified template parts
+		 * @param  mixed $mixed An string or array of parts
+		 */
+		function getParts($parts = array()) {
+
+			if ( is_array($parts) ) {
+				foreach( $parts as $part ) {
+					get_template_part( $part );
+				};
+			} else if ( is_string($parts) ) {
+				get_template_part( $parts );
+			}
 		}
 
 		/**
@@ -91,6 +161,9 @@
 		}
 	}
 
+	global $site;
+	$site = new Chimpress_Utilities();
+
 	/* 	    ______                 __  _
 		   / ____/_  ______  _____/ /_(_)___  ____  _____
 		  / /_  / / / / __ \/ ___/ __/ / __ \/ __ \/ ___/
@@ -121,6 +194,7 @@
 	 **/
 	function img($path = '', $echo = true){
 
-		Chimpress_Utilities::img($path, $echo);
+		global $site;
+		$site->img($path, $echo);
 	}
 ?>
