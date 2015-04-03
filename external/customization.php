@@ -10,7 +10,7 @@
 	 */
 
 	/* =============================================================================================
-	Theme Support
+	Theme Support+
 	============================================================================================= */
 
 	add_theme_support('menus');
@@ -20,7 +20,7 @@
 	Menus
 	============================================================================================= */
 
-	register_nav_menus(array('primary' => 'Primary Navigation'));
+	register_nav_menus( array('primary' => 'Primary Navigation') );
 
 	/* =============================================================================================
 	Sticky Footer
@@ -38,7 +38,7 @@
 	Hide Admin Bar
 	============================================================================================= */
 
-	if(!current_user_can('edit_posts')){ add_filter('show_admin_bar', '__return_false'); }
+	if( ! current_user_can('edit_posts') ){ add_filter('show_admin_bar', '__return_false'); }
 
 	/* =============================================================================================
 	Remove link rel='prev' and link rel='next'
@@ -50,8 +50,8 @@
 	Worpdress Login Style
 	============================================================================================= */
 
-	function wc_login_stylesheet(){ ?>
-		<link rel="stylesheet" id="wc_wp_admin_css"  href="<?php echo get_bloginfo('stylesheet_directory') . '/login.css'; ?>" type="text/css" media="all">
+	function wc_login_stylesheet() { ?>
+		<link rel="stylesheet" type="text/css" id="wc-wp-admin-css" href="<?php echo get_bloginfo('stylesheet_directory') . '/login.css'; ?>" media="all">
 	<?php }
 
 	add_action('login_enqueue_scripts', 'wc_login_stylesheet');
@@ -60,7 +60,7 @@
 	Set the permalink structure
 	============================================================================================= */
 
-	add_action('init', function(){
+	add_action('init', function() {
 
 		global $wp_rewrite;
 		$wp_rewrite->set_permalink_structure('/%postname%/');
@@ -86,39 +86,41 @@
 	Hiding sections in the administator
 	============================================================================================= */
 
-	function wc_remove_menus(){
+	function wc_remove_menus() {
 
 		global $menu;
 
-		$restricted = array(__('Dashboard'), __('Posts'), __('Media'), __('Links'), __('Pages'), __('Appearance'), __('Tools'), __('Users'), __('Settings'), __('Comments'), __('Plugins'));
+		//Restricted example
+		//$restricted = array(__('Dashboard'), __('Posts'), __('Media'), __('Links'), __('Pages'), __('Appearance'), __('Tools'), __('Users'), __('Settings'), __('Comments'), __('Plugins'));
 
 		$restricted = array();
 
 		end ($menu);
 		while (prev($menu)){
 			$value = explode( ' ',$menu[key($menu)][0] );
-			if(in_array($value[0] != null? $value[0] : "", $restricted)){ unset( $menu[key($menu)] ); }
+			if( in_array( $value[0] != null? $value[0] : "", $restricted ) ){ unset( $menu[key($menu)] ); }
 		}
 	}
 
 	add_action('admin_menu', 'wc_remove_menus');
 
-	add_filter('acf/settings/show_admin', 'my_acf_show_admin');
-	function my_acf_show_admin( $show ) {
+	function my_acf_show_admin($show) {
 
 		$user = wp_get_current_user();
-		if ($user->ID != 1) {
+		if ( $user->ID != 1 ) {
 			return false;
 		}
 
 		else return true;
 	}
 
+	add_filter('acf/settings/show_admin', 'my_acf_show_admin');
+
 	/* =============================================================================================
 	File upload special chars sanitization
 	============================================================================================= */
 
-	function wc_upload_sanitize_accents($filename){
+	function wc_upload_sanitize_accents($filename) {
 
 		return remove_accents($filename);
 	}
@@ -129,7 +131,7 @@
 	Body Class per Browser
 	============================================================================================= */
 
-	function wc_browser_body_class($classes){
+	function wc_browser_body_class($classes) {
 
 		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
@@ -179,25 +181,38 @@
 
 	//Lets add Open Graph Meta Info
 	function wc_fbog() {
+
 		global $post;
-		if (!is_singular()) return;
+		global $site;
 
-		echo '<meta property="fb:admins" content="YOUR USER ID">' . "\n";
-		echo '<meta property="og:title" content="' . get_the_title() . '">' . "\n";
-		echo '<meta property="og:type" content="article">' . "\n";
-		echo '<meta property="og:url" content="' . get_permalink() . '">';
-		echo '<meta property="og:site_name" content="' . get_bloginfo( 'name' ) . '">' . "\n";
+		echo "\n\t\t";
+		$metas = array();
 
-		if(!has_post_thumbnail( $post->ID )) {
-			$default_image = img('default-image.jpg', false);
-			echo '<meta property="og:image" content="' . $default_image . '">' . "\n";
+		$metas[] = '<meta property="fb:admins" content="YOUR USER ID">';
+		$metas[] = '<meta property="og:title" content="' . get_the_title() . '">';
+		$metas[] = '<meta property="og:type" content="article">';
+		$metas[] = '<meta property="og:url" content="' . get_permalink() . '">';
+		$metas[] = '<meta property="og:site_name" content="' . get_bloginfo('name') . '">';
+
+		$default_image = $site->img('default-image.jpg', false);
+
+		if ( ! is_singular() ) {
+			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
 		}
 
-		else{
+		if ( ! has_post_thumbnail( $post->ID ) ) {
+			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
+		}
+
+		else {
 			$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-			echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '">' . "\n";
+			$metas[] = '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '">';
 		}
+
+		echo implode("\n\t\t", $metas);
+		echo "\n";
 	}
+
 	add_action( 'wp_head', 'wc_fbog', 5 );
 
 	/* =============================================================================================
