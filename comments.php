@@ -12,29 +12,26 @@
  * @since 		Chimpress 1.0
  */
 ?>
+<?php if ( post_password_required() ) : ?>
+	<div id="comments">
+		<p>This post is password protected. Enter the password to view any comments</p>
+	</div>
+<?php
+		/* Stop the rest of comments.php from being processed,
+		 * but don't kill the script entirely -- we still have
+		 * to fully load the template.
+		 */
+		return;
+	endif;
+?>
+
 <div id="comments">
-	<?php if ( post_password_required() ) : ?>
-	<p>This post is password protected. Enter the password to view any comments</p>
-</div>
-
-	<?php
-			/* Stop the rest of comments.php from being processed,
-			 * but don't kill the script entirely -- we still have
-			 * to fully load the template.
-			 */
-			return;
-		endif;
-	?>
-
-	<?php // You can start editing here -- including this comment! ?>
-
 	<?php if ( have_comments() ) : ?>
 
-	<h2><?php comments_number(); ?></h2>
-
-	<ol>
-		<?php wp_list_comments( array( 'callback' => 'starkers_comment' ) ); ?>
-	</ol>
+		<h2><?php comments_number(); ?></h2>
+		<ol>
+			<?php wp_list_comments( array( 'callback' => 'starkers_comment' ) ); ?>
+		</ol>
 
 	<?php
 		/* If there are no comments and comments are closed, let's leave a little note, shall we?
@@ -43,7 +40,7 @@
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
 
-	<p>Comments are closed</p>
+		<p>Comments are closed</p>
 
 	<?php endif; ?>
 
