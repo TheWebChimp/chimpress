@@ -29,6 +29,7 @@
 	Custom Post Types - include custom post types and taxonimies here e.g.
 	e.g. require_once( 'custom-post-types/your-custom-post-type.php' );
 	============================================================================================= */
+
 	//require_once( 'custom-post-types/your-custom-post-type.php' );
 
 	/* =============================================================================================
@@ -46,6 +47,13 @@
 
 		#CSS =======================================================================================
 
+		#Base
+		wp_register_style( 'reset', get_stylesheet_directory_uri().'/css/reset.css', '', '', 'screen' );
+		wp_enqueue_style( 'reset' );
+
+		wp_register_style( 'sticky-footer', get_stylesheet_directory_uri().'/css/sticky-footer.css', '', '', 'screen' );
+		wp_enqueue_style( 'sticky-footer' );
+
 		#Chimp Plugins
 		wp_register_style( 'jquery.alert', get_stylesheet_directory_uri().'/css/jquery.alert.css', '', '', 'screen' );
 		wp_enqueue_style( 'jquery.alert' );
@@ -53,8 +61,8 @@
 		#Other Plugins
 
 		#Fonts
-		wp_register_style( 'google.font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css', '', '', 'screen' );
-		wp_enqueue_style( 'google.font-awesome' );
+		wp_register_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css', '', '', 'screen' );
+		wp_enqueue_style( 'font-awesome' );
 
 		wp_register_style( 'google.open-sans', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,800italic,400italic,300italic|Open+Sans+Condensed:300,700,300italic', '', '', 'screen' );
 		wp_enqueue_style( 'google.open-sans' );
@@ -69,8 +77,8 @@
 		wp_register_style( 'style', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
 		wp_enqueue_style( 'style' );
 
-		wp_register_style( 'boilerplate', get_stylesheet_directory_uri().'/css/boilerplate.css', '', '', 'screen' );
-		wp_enqueue_style( 'boilerplate' );
+		wp_register_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate-build.css', '', '', 'screen' );
+		wp_enqueue_style( 'chimplate' );
 
 		wp_register_style( 'mobile', get_template_directory_uri().'/mobile.css', '', '', 'screen' );
 		wp_enqueue_style( 'mobile' );

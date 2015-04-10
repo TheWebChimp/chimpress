@@ -20,11 +20,11 @@
 	padding: 1px;
 	/* border-radius */
 	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
 	/* box-shadow */
 	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
 }
 
 .alert-overlay .alert .alert-message {
