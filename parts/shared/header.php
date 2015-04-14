@@ -1,5 +1,5 @@
 <?php if(STICKY_FOOTER): ?>
-	<div id="wrapper" class="site-wrapper">
+	<div class="sticky-wrapper">
 <?php endif; ?>
 
 <header class="site-header">

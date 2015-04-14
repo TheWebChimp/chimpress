@@ -1,5 +1,5 @@
 	<?php if(STICKY_FOOTER): ?>
-		<div class="push"></div>
+		<div class="sticky-push"></div>
 	</div><!-- #wrapper -->
 	<?php endif; ?>
 

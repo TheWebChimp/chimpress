@@ -13,7 +13,7 @@ and Opera.
 * { margin: 0; }
 html, body { height: 100%; }
 
-#wrapper {
+.sticky-wrapper {
 
 	min-height: 100%;
 	height: auto !important;
@@ -21,4 +21,4 @@ html, body { height: 100%; }
 	margin: 0 auto -100px;
 }
 
-.site-footer, .push { height: 100px; clear: both; }
+.site-footer, .sticky-push { height: 100px; clear: both; }
