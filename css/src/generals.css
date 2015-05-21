@@ -1,19 +1,12 @@
-/* _____           __  _
-  / ___/___  _____/ /_(_)___  ____
-  \__ \/ _ \/ ___/ __/ / __ \/ __ \
- ___/ /  __/ /__/ /_/ / /_/ / / / /
-/____/\___/\___/\__/_/\____/_/ /_/
+/*  ______                           __
+   / ____/__  ____  ___  _________ _/ /____
+  / / __/ _ \/ __ \/ _ \/ ___/ __ `/ / ___/
+ / /_/ /  __/ / / /  __/ /  / /_/ / (__  )
+ \____/\___/_/ /_/\___/_/   \__,_/_/____/
 
-Esta es una sección del sitio. Define reglas para acomodar bloques y elementos.
+En este archivo se encuentran todos los generales del proyecto. Header, Footer y overrides de
+Chimplate.
 */
-
-/**
-*
-* [Nombre de la sección]
-* ==================================================================================================
-* Aquí va la descripción de la sección
-*
-**/
 
 /*  ┌┬┐┌─┐┌┐ ┬┬  ┌─┐
 	││││ │├┴┐││  ├┤
