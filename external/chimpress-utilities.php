@@ -19,7 +19,7 @@
 		 * @param  boolean $echo     Whether to print out the resulting url or not
 		 * @return string            The resulting url
 		 */
-		function img($filename, $echo = true) {
+		function img( $filename, $echo = true ) {
 			$ret = get_bloginfo('template_url') . "/images/{$filename}";
 			if ($echo) {
 				echo $ret;
@@ -33,7 +33,7 @@
 		 * @param  boolean $echo Whether to print the resulting string or not
 		 * @return string        The well-formed path
 		 */
-		function baseDir($path = '', $echo = false) {
+		function baseDir( $path = '', $echo = false ) {
 			$ret = get_template_directory();
 			if ($echo) {
 				echo $ret;
@@ -61,7 +61,7 @@
 		 * @param  boolean $echo Print the result?
 		 * @return string        Site name
 		 */
-		function getSiteTitle($echo = false) {
+		function getSiteTitle( $echo = false ) {
 			$ret = get_bloginfo('name');
 			if ($echo) {
 				echo $ret;
@@ -73,7 +73,7 @@
 		 * Display a generic error message
 		 * @param  string $message The error message
 		 */
-		function errorMessage($message) {
+		function errorMessage( $message ) {
 			$markup = '<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>{$title}</title> <style> body { font-family: sans-serif; font-size: 14px; background: #F8F8F8; } div.center { width: 960px; margin: 0 auto; padding: 1px 0; } p.message { padding: 15px; border: 1px solid #DDD; background: #F1F1F1; color: #656565; } </style> </head> <body> <div class="center"> <p class="message">{$message}</p> </div> </body> </html>';
 			$markup = str_replace('{$title}', $this->getSiteTitle(), $markup);
 			$markup = str_replace('{$message}', $message, $markup);
@@ -85,7 +85,7 @@
 		 * Load the specified template parts
 		 * @param  mixed $mixed An string or array of parts
 		 */
-		function getParts($parts = array()) {
+		function getParts( $parts = array() ) {
 
 			if ( is_array($parts) ) {
 				foreach( $parts as $part ) {
@@ -103,7 +103,7 @@
 		 *
 		 * @param 	array
 		 * @return 	void
-		 * @author 	Keir Whitaker
+		 * @author 	WebChimp
 		 **/
 		public static function get_template_parts( $parts = array() ) {
 			foreach( $parts as $part ) {
@@ -117,7 +117,7 @@
 		 *
 		 * @param 	string
 		 * @return 	integer
-		 * @author 	Keir Whitaker
+		 * @author 	WebChimp
 		 **/
 		public static function get_page_id_from_path( $path ) {
 			$page = get_page_by_path( $path );
@@ -134,7 +134,7 @@
 		 *
 		 * @param 	array
 		 * @return 	array
-		 * @author 	Keir Whitaker
+		 * @author 	WebChimp
 		 */
 		public static function add_slug_to_body_class( $classes ) {
 			global $post;
@@ -153,7 +153,7 @@
 		 *
 		 * @param 	string
 		 * @return 	string
-		 * @author 	Keir Whitaker
+		 * @author 	WebChimp
 		 */
 		public static function get_category_id( $cat_name ){
 			$term = get_term_by( 'name', $cat_name, 'category' );
@@ -177,7 +177,7 @@
 	 *
 	 * @param 	array
 	 * @return 	void
-	 * @author 	Keir Whitaker
+	 * @author 	WebChimp
 	 **/
 	function print_a( $a ) {
 		print( '<pre>' );
@@ -188,13 +188,34 @@
 	/**
 	 * Print html for image from images folder
 	 *
-	 * @param 	array
+	 * @param 	string, bool
 	 * @return 	void
-	 * @author 	Keir Whitaker
+	 * @author 	WebChimp
 	 **/
-	function img($path = '', $echo = true){
+	function img( $path = '', $echo = true ) {
 
 		global $site;
 		$site->img($path, $echo);
+	}
+
+	/**
+	 * Enqueue all styles inside a folder
+	 *
+	 * @param 	string
+	 * @return 	void
+	 * @author 	WebChimp
+	 **/
+
+	function enqueue_dev_styles( $dir = '/css/src/' ) {
+
+		if ($handle = opendir(get_template_directory() . $dir) ) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != "..") {
+
+					wp_enqueue_style( $entry, get_template_directory_uri() . $dir . $entry, '', '', 'screen' );
+				}
+			}
+			closedir($handle);
+		}
 	}
 ?>

@@ -4,10 +4,16 @@
 	 *
 	 * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
 	 *
- 	 * @package 	WordPress
- 	 * @subpackage 	Chimpress
- 	 * @since 		Chimpress 4.0
+	 * @package 	WordPress
+	 * @subpackage 	Chimpress
+	 * @since 		Chimpress 4.0
 	 */
+
+	/* =============================================================================================
+	Development Profile
+	============================================================================================= */
+
+	define('DEV_PROFILE', 'development');
 
 	/* =============================================================================================
 	Required external files
@@ -64,8 +70,17 @@
 
 		#Structure
 		wp_enqueue_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate.css', '', '', 'screen' );
-		wp_enqueue_style( 'mobile', get_template_directory_uri().'/css/mobile.css', '', '', 'screen' );
-		wp_enqueue_style( 'desktop', get_template_directory_uri().'/css/desktop.css', '', '', 'screen' );
+
+		if(DEV_PROFILE == 'development') {
+
+			wc_enqueue_dev_styles();
+		}
+
+		else if(DEV_PROFILE == 'production') {
+
+			#General
+			wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/css/dist/theme.css', '', '', 'screen' );
+		}
 
 		#JS ========================================================================================
 
