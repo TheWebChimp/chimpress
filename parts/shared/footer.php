@@ -4,5 +4,11 @@
 	<?php endif; ?>
 
 	<footer class="site-footer">
-		<p class="site-footer-copyright">&copy; <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
+		<div class="inner boxfix-vert">
+			<div class="margins-horz margins-5">
+
+				<p class="site-footer-copyright">&copy; <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
+
+			</div>
+		</div>
 	</footer>
