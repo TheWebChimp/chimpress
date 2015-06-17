@@ -206,7 +206,7 @@
 	 * @author 	WebChimp
 	 **/
 
-	function enqueue_dev_styles( $dir = '/css/src/' ) {
+	function wc_enqueue_dev_styles( $dir = '/css/src/' ) {
 
 		if ($handle = opendir(get_template_directory() . $dir) ) {
 			while (false !== ($entry = readdir($handle))) {
