@@ -68,17 +68,18 @@
 
 		#Structure
 		wp_enqueue_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate.css', '', '', 'screen' );
-		wp_enqueue_style( 'project.less', get_stylesheet_directory_uri().'/css/project.less', '', '', 'screen' );
 
 		if(DEV_PROFILE == 'development') {
 
 			wc_enqueue_dev_styles();
+			wp_enqueue_style( 'project', get_stylesheet_directory_uri().'/css/project.less', '', '', 'screen' );
 		}
 
 		else if(DEV_PROFILE == 'production') {
 
 			#General
 			wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/css/dist/theme.css', '', '', 'screen' );
+			wp_enqueue_style( 'project', get_stylesheet_directory_uri().'/css/project.css', '', '', 'screen' );
 		}
 
 		#JS ========================================================================================
