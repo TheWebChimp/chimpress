@@ -63,10 +63,8 @@
 		#Other Plugins
 
 		#Fonts
-		wp_enqueue_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css', '', '', 'screen' );
-		wp_enqueue_style( 'google.open-sans', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,800italic,400italic,300italic|Open+Sans+Condensed:300,700,300italic', '', '', 'screen' );
-		wp_enqueue_style( 'google.oswald', '//fonts.googleapis.com/css?family=Oswald:400,700,300', '', '', 'screen' );
-		wp_enqueue_style( 'google.lato', '//fonts.googleapis.com/css?family=Lato:400,300,700,900', '', '', 'screen' );
+		wp_enqueue_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css', '', '', 'screen' );
+		wp_enqueue_style( 'google.fonts', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,800italic,400italic,300italic|Open+Sans+Condensed:300,700,300italic|Oswald:400,700,300|Lato:400,300,700,900', '', '', 'screen' );
 
 		#Structure
 		wp_enqueue_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate.css', '', '', 'screen' );
@@ -85,9 +83,7 @@
 		#JS ========================================================================================
 
 		#Chimp Plugins
-		wp_register_script( 'jquery.alert', get_template_directory_uri().'/js/jquery.alert.min.js', array( 'jquery' ) );
-		wp_register_script( 'jquery.loading', get_template_directory_uri().'/js/jquery.loading.min.js', array( 'jquery' ) );
-		wp_register_script( 'jquery.validator3', get_template_directory_uri().'/js/jquery.validator3.min.js', array( 'jquery' ) );
+		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/js/plugins.js', array( 'jquery' ) );
 
 		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(
 
@@ -96,9 +92,7 @@
 			'jquery-form',
 
 			//Chimp Plugins
-			'jquery.alert',
-			'jquery.loading',
-			'jquery.validator3'
+			'chimp.plugins'
 		));
 		wp_enqueue_script( 'site' );
 	}
