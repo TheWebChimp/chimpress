@@ -58,7 +58,7 @@
 		wp_enqueue_style( 'sticky-footer', get_stylesheet_directory_uri().'/css/sticky-footer.css', '', '', 'screen' );
 
 		#Chimp Plugins
-		wp_enqueue_style( 'jquery.alert', get_stylesheet_directory_uri().'/css/plugins/jquery.alert.css', '', '', 'screen' );
+		wp_enqueue_style( 'jquery.plugins', get_stylesheet_directory_uri().'/css/plugins/jquery.plugins.css', '', '', 'screen' );
 
 		#Other Plugins
 
@@ -68,6 +68,7 @@
 
 		#Structure
 		wp_enqueue_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate.css', '', '', 'screen' );
+		wp_enqueue_style( 'project.less', get_stylesheet_directory_uri().'/css/project.less', '', '', 'screen' );
 
 		if(DEV_PROFILE == 'development') {
 

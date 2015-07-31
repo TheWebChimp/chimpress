@@ -51,7 +51,7 @@
 	============================================================================================= */
 
 	function wc_login_stylesheet() { ?>
-		<link rel="stylesheet" type="text/css" id="wc-wp-admin-css" href="<?php echo get_bloginfo('stylesheet_directory') . '/login.css'; ?>" media="all">
+		<link rel="stylesheet" type="text/css" id="wc-wp-admin-css" href="<?php echo get_bloginfo('stylesheet_directory') . '/css/login.css'; ?>" media="all">
 	<?php }
 
 	add_action('login_enqueue_scripts', 'wc_login_stylesheet');
@@ -222,4 +222,33 @@
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page();
 	}
+
+	function wc_painLESS($tag, $handle) {
+
+		global $wp_styles;
+		$match_pattern = '/\.less$/U';
+		if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
+
+			if( include_once (get_template_directory() . '/lib/lessc.inc.php') ) {
+
+				$src = $wp_styles->registered[$handle]->src;
+				$path = substr($src, 0, strrpos($src, '/'));
+				$rel_path = str_replace(get_template_directory_uri(), '', $path);
+				$file = $handle;
+				$comp_file = str_replace('.less', '.css', $file);
+
+				$src_file = get_template_directory() . "{$rel_path}/{$file}";
+				$dest_file = get_template_directory() . "{$rel_path}/{$comp_file}";
+
+				$less = new lessc;
+				$less->checkedCompile($src_file, $dest_file);
+
+				$tag = str_replace('.less', '.css', $tag);
+			}
+		}
+
+		return $tag;
+	}
+
+	add_filter( 'style_loader_tag', 'wc_painLESS', 5, 2 );
 ?>
