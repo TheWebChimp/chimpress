@@ -237,8 +237,8 @@
 
 				$src = $wp_styles->registered[$handle]->src;
 				$path = substr($src, 0, strrpos($src, '/'));
+				$file = substr($src, strrpos($src, '/') + 1);
 				$rel_path = str_replace(get_template_directory_uri(), '', $path);
-				$file = $handle;
 				$comp_file = str_replace('.less', '.css', $file);
 
 				$src_file = get_template_directory() . "{$rel_path}/{$file}";
