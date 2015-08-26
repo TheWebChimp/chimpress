@@ -34,7 +34,7 @@
 		 * @return string        The well-formed path
 		 */
 		function baseDir( $path = '', $echo = false ) {
-			$ret = get_template_directory();
+			$ret = get_template_directory() . $path;
 			if ($echo) {
 				echo $ret;
 			}
@@ -49,7 +49,7 @@
 		 * @return string            The resulting url
 		 */
 		function urlTo($route, $echo = false, $protocol = null) {
-			$url = home_url( $path, $protocol );
+			$url = home_url( $route, $protocol );
 			if ($echo) {
 				echo $url;
 			}
