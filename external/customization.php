@@ -200,7 +200,7 @@
 			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
 		}
 
-		if ( ! has_post_thumbnail( $post->ID ) ) {
+		else if ( ! has_post_thumbnail( $post->ID ) ) {
 			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
 		}
 
