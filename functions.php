@@ -85,12 +85,15 @@
 
 		#JS ========================================================================================
 
-		#Chimp Plugins
+		#Chimp Scripts
 		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/js/plugins.js', array( 'jquery' ) );
 
-		#Other Plugins
+		#Other Scripts
+		wp_register_script( 'class.js', get_template_directory_uri().'/js/class.js' );
 
 		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(
+
+			'class.js',
 
 			//Plugins
 			'jquery',
