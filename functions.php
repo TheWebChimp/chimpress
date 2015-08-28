@@ -21,9 +21,9 @@
 
 	require_once( 'external/site.inc.php' );
 	require_once( 'external/utilities.inc.php' );
+	require_once( 'external/ajax.inc.php' );
 	require_once( 'external/customization.php' );
 	require_once( 'external/shortcodes.php' );
-	require_once( 'external/ajax.php' );
 
 	/* =============================================================================================
 	Actions and Filters
