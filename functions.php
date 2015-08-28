@@ -19,7 +19,8 @@
 	Required external files
 	============================================================================================= */
 
-	require_once( 'external/chimpress-utilities.php' );
+	require_once( 'external/site.inc.php' );
+	require_once( 'external/utilities.inc.php' );
 	require_once( 'external/customization.php' );
 	require_once( 'external/shortcodes.php' );
 	require_once( 'external/ajax.php' );
@@ -29,7 +30,7 @@
 	============================================================================================= */
 
 	add_action( 'wp_enqueue_scripts', 'chimpress_script_enqueuer' );
-	add_filter( 'body_class', array( 'Chimpress_Utilities', 'add_slug_to_body_class' ) );
+	add_filter( 'body_class', array( 'Site', 'add_slug_to_body_class' ) );
 
 	/* =============================================================================================
 	Custom Post Types - include custom post types and taxonimies here e.g.
@@ -86,6 +87,8 @@
 
 		#Chimp Plugins
 		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/js/plugins.js', array( 'jquery' ) );
+
+		#Other Plugins
 
 		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(
 
