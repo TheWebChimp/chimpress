@@ -127,7 +127,6 @@
 		 * @param  mixed $mixed An string or array of parts
 		 */
 		function getParts( $parts = array() ) {
-
 			if ( is_array($parts) ) {
 				foreach( $parts as $part ) {
 					get_template_part( $part );
