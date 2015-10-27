@@ -224,6 +224,41 @@
 	}
 
 	/* =============================================================================================
+	Custom Login Fail
+	============================================================================================= */
+
+	add_action('wp_login_failed', 'wc_login_fail');
+
+	function wc_login_fail($username){
+		// Get the reffering page, where did the post submission come from?
+		$referrer = $_SERVER['HTTP_REFERER'];
+
+		// if there's a valid referrer, and it's not the default log-in screen
+		if(!empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin')){
+			// let's append some information (login=failed) to the URL for the theme to use
+			wp_redirect($referrer . '?login=failed');
+		exit;
+		}
+	}
+
+	add_action( 'wp_authenticate', 'wc_empty_user', 1, 2 );
+
+	function wc_empty_user( $username, $pwd ) {
+
+		$referrer = $_SERVER['HTTP_REFERER'];
+
+		// if there's a valid referrer, and it's not the default log-in screen
+		if(!empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin')){
+
+			if ( empty( $username ) ) {
+				// let's append some information (login=failed) to the URL for the theme to use
+				wp_redirect($referrer . '?login=failed');
+				exit;
+			}
+		}
+	}
+
+	/* =============================================================================================
 	painLESS FTW
 	============================================================================================= */
 
