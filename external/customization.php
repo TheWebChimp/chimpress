@@ -241,7 +241,7 @@
 		}
 	}
 
-	add_action( 'wp_authenticate', 'wc_empty_user', 1, 2 );
+	/*add_action( 'wp_authenticate', 'wc_empty_user', 1, 2 );
 
 	function wc_empty_user( $username, $pwd ) {
 
@@ -256,7 +256,7 @@
 				exit;
 			}
 		}
-	}
+	}*/
 
 	/* =============================================================================================
 	painLESS FTW
