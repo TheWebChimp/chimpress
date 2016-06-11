@@ -38,7 +38,7 @@
 	Hide Admin Bar
 	============================================================================================= */
 
-	if( ! current_user_can('edit_posts') ){ add_filter('show_admin_bar', '__return_false'); }
+	if ( ! current_user_can('edit_posts') ){ add_filter('show_admin_bar', '__return_false'); }
 
 	/* =============================================================================================
 	Remove link rel='prev' and link rel='next'
@@ -89,16 +89,32 @@
 	function wc_remove_menus() {
 
 		global $menu;
+		$user = wp_get_current_user();
 
-		//Restricted example
-		//$restricted = array(__('Dashboard'), __('Posts'), __('Media'), __('Links'), __('Pages'), __('Appearance'), __('Tools'), __('Users'), __('Settings'), __('Comments'), __('Plugins'));
+		if ($user->ID != 1) {
 
-		$restricted = array();
+			//Restricted example
+			/*$restricted = array(
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins')
+			);*/
 
-		end ($menu);
-		while (prev($menu)){
-			$value = explode( ' ',$menu[key($menu)][0] );
-			if( in_array( $value[0] != null? $value[0] : "", $restricted ) ){ unset( $menu[key($menu)] ); }
+			$restricted = array();
+
+			end ($menu);
+			while (prev($menu)){
+				$value = explode( ' ',$menu[key($menu)][0] );
+				if ( in_array( $value[0] != null? $value[0] : "", $restricted ) ){ unset( $menu[key($menu)] ); }
+			}
 		}
 	}
 
@@ -107,11 +123,9 @@
 	function my_acf_show_admin($show) {
 
 		$user = wp_get_current_user();
-		if ( $user->ID != 1 ) {
+		if ($user->ID != 1) {
 			return false;
-		}
-
-		else return true;
+		} else { return true; }
 	}
 
 	add_filter('acf/settings/show_admin', 'my_acf_show_admin');
@@ -135,19 +149,19 @@
 
 		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
-		if($is_lynx)		$classes[] = 'lynx';
-		elseif($is_gecko)	$classes[] = 'gecko';
-		elseif($is_opera)	$classes[] = 'opera';
-		elseif($is_NS4)		$classes[] = 'ns4';
-		elseif($is_safari)	$classes[] = 'safari';
-		elseif($is_chrome)	$classes[] = 'chrome';
-		elseif($is_IE){
+		if ($is_lynx)		$classes[] = 'lynx';
+		elseif ($is_gecko)	$classes[] = 'gecko';
+		elseif ($is_opera)	$classes[] = 'opera';
+		elseif ($is_NS4)	$classes[] = 'ns4';
+		elseif ($is_safari)	$classes[] = 'safari';
+		elseif ($is_chrome)	$classes[] = 'chrome';
+		elseif ($is_IE) {
 			$classes[] = 'ie';
-			if(preg_match('/MSIE ( [0-9]+)([a-zA-Z0-9.]+)/', $_SERVER['HTTP_USER_AGENT'], $browser_version))
+			if (preg_match('/MSIE ( [0-9]+)([a-zA-Z0-9.]+)/', $_SERVER['HTTP_USER_AGENT'], $browser_version))
 				$classes[] = 'ie' . $browser_version[1];
 		} else $classes[] = 'unknown';
 
-		if($is_iphone) $classes[] = 'iphone';
+		if ($is_iphone) $classes[] = 'iphone';
 
 		return $classes;
 	}
@@ -188,7 +202,7 @@
 		echo "\n\t\t";
 		$metas = array();
 
-		$metas[] = '<meta property="fb:admins" content="YOUR USER ID">';
+		$metas[] = '<meta property="fb:admins" content="535258781">';
 		$metas[] = '<meta property="og:title" content="' . get_the_title() . '">';
 		$metas[] = '<meta property="og:type" content="article">';
 		$metas[] = '<meta property="og:url" content="' . get_permalink() . '">';
@@ -196,7 +210,7 @@
 
 		$default_image = $site->img('default-image.jpg', false);
 
-		if ( ! is_singular() ) {
+		if ( ! is_singular() || is_home() ) {
 			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
 		}
 

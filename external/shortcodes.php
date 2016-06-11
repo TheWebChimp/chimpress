@@ -8,7 +8,7 @@
 	add_shortcode( 'br.clear', 'wc_brclear' );
 
 	/*
-	 * Boilerplate Row
+	 * Chimplate Row
 	 */
 	function wc_row( $atts , $content = null ) {
 
@@ -22,7 +22,7 @@
 	add_shortcode( 'row', 'wc_row' );
 
 	/*
-	 * Boilerplate Col
+	 * Chimplate Col
 	 */
 	function wc_col( $atts , $content = null ) {
 
