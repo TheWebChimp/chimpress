@@ -1,0 +1,36 @@
+/*   _    __           _       __    __
+	| |  / /___ ______(_)___ _/ /_  / /__  _____
+	| | / / __ `/ ___/ / __ `/ __ \/ / _ \/ ___/
+	| |/ / /_/ / /  / / /_/ / /_/ / /  __(__  )
+	|___/\__,_/_/  /_/\__,_/_.___/_/\___/____/
+	                                             */
+
+// Breakpoints
+
+@breakpoint_tablet: 	768px;
+@breakpoint_desktop: 	1000px;
+
+//Margins and all that stuff
+
+@margin_default: 		15px;
+@margin_double: 		@margin_default*2;
+@margin_triple: 		@margin_default*3;
+@margin_quad: 			@margin_default*4;
+
+@margin_half: 			@margin_default/2;
+@margin_third: 			@margin_default/3;
+@margin_fourth: 		@margin_default/4;
+@margin_quart: 			@margin_fourth;
+
+//Font
+
+@size_base: 			14px;
+@size_large: 			ceil((@size_base * 1.25)); // ~18px
+@size_small: 			ceil((@size_base * 0.85)); // ~12px
+
+@size_h1: 				floor((@size_base * 2.6)); // ~36px
+@size_h2: 				floor((@size_base * 2.15)); // ~30px
+@size_h3: 				ceil((@size_base * 1.7)); // ~24px
+@size_h4: 				ceil((@size_base * 1.25)); // ~18px
+@size_h5: 				@size_base;
+@size_h6: 				ceil((@size_base * 0.85)); // ~12px

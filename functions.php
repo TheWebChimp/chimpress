@@ -56,7 +56,6 @@
 
 		#Base
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri().'/css/reset.css', '', '', 'screen' );
-		wp_enqueue_style( 'sticky-footer', get_stylesheet_directory_uri().'/css/sticky-footer.css', '', '', 'screen' );
 
 		#Chimp Plugins
 		wp_enqueue_style( 'jquery.plugins', get_stylesheet_directory_uri().'/css/plugins/jquery.plugins.css', '', '', 'screen' );
@@ -71,25 +70,22 @@
 		wp_enqueue_style( 'chimplate', get_stylesheet_directory_uri().'/css/chimplate.css', '', '', 'screen' );
 
 		if(DEV_PROFILE == 'development') {
-
-			wc_enqueue_dev_styles();
 			wp_enqueue_style( 'project', get_stylesheet_directory_uri().'/css/project.less', '', '', 'screen' );
 		}
 
 		else if(DEV_PROFILE == 'production') {
-
-			#General
-			wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/css/dist/theme.css', '', '', 'screen' );
 			wp_enqueue_style( 'project', get_stylesheet_directory_uri().'/css/project.css', '', '', 'screen' );
 		}
 
 		#JS ========================================================================================
 
+		#Class
+		wp_register_script( 'class.js', get_template_directory_uri().'/js/class.js' );
+
 		#Chimp Scripts
 		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/js/plugins.js', array( 'jquery' ) );
 
 		#Other Scripts
-		wp_register_script( 'class.js', get_template_directory_uri().'/js/class.js' );
 
 		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(
 
@@ -100,7 +96,9 @@
 			'jquery-form',
 
 			//Chimp Plugins
-			'chimp.plugins'
+			'chimp.plugins',
+
+			//Other Plugins
 		));
 		wp_enqueue_script( 'site' );
 	}

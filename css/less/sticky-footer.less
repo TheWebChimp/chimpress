@@ -13,12 +13,22 @@ and Opera.
 * { margin: 0; }
 html, body { height: 100%; }
 
-.sticky-wrapper {
+@sticky_padding: 100px;
 
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -100px;
+@media (min-width: @breakpoint_tablet) {
+
+	.sticky-wrapper {
+
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		margin: 0 auto -@sticky_padding;
+	}
+
+	.site-footer,
+	.sticky-push {
+
+		height: @sticky_padding;
+		clear: both;
+	}
 }
-
-.site-footer, .sticky-push { height: 100px; clear: both; }
