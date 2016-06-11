@@ -29,6 +29,21 @@
 		}
 	}
 
+	/**
+	 * Enqueue all styles inside a folder
+	 * @param 	string
+	 * @return 	void
+	 */
+	function wc_enqueue_google_fonts( $array ) {
+
+		$fonts = array();
+		foreach($array as $font_name => $sizes) {
+			$fonts[] = str_replace(' ', '+', $font_name) . ":" . implode(',', $sizes);
+		}
+
+		wp_enqueue_style('google.fonts', '//fonts.googleapis.com/css?family=' . implode('|', $fonts), '', '', 'screen');
+	}
+
 	/* Hummingbird port */
 	/* ------------------------------------------------------------------------------------------ */
 
@@ -54,15 +69,9 @@
 			$qty = substr( $value, 0, $value_length - 1 );
 			$unit = strtolower( substr( $value, $value_length - 1 ) );
 			switch ( $unit ) {
-				case 'k':
-					$qty *= 1024;
-					break;
-				case 'm':
-					$qty *= 1048576;
-					break;
-				case 'g':
-					$qty *= 1073741824;
-					break;
+				case 'k': $qty *= 1024; break;
+				case 'm': $qty *= 1048576; break;
+				case 'g': $qty *= 1073741824; break;
 			}
 			return $qty;
 		}
