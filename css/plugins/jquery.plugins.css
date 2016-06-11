@@ -5,6 +5,7 @@
  * @requires   jQuery 1.8+
  * @license    MIT
  */
+
 .alert-overlay {
 
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEElEQVQImWNgYGCYCcUQBgASAAJli5xnrQAAAABJRU5ErkJggg==') repeat;
@@ -27,17 +28,14 @@
 	padding: 1px;
 	/* border-radius */
 	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
 	/* box-shadow */
 	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
 }
 
-.alert-overlay .alert .alert-message {
-
-	padding: 20px;
-}
+.alert-overlay .alert .alert-message { padding: 20px; }
 
 .alert-overlay .alert .alert-buttons {
 
@@ -48,10 +46,7 @@
 
 @media (max-width: 768px) {
 
-	.alert-overlay .alert {
-
-		max-width: 90%;
-	}
+	.alert-overlay .alert { max-width: 90%; }
 }
 
 /**
@@ -61,6 +56,7 @@
 * @requires jQuery 1.8+
 * @license MIT
 */
+
 .datepicker {
 
 	position: absolute;
@@ -74,15 +70,15 @@
 	z-index: 50;
 	/* box-shadow */
 	-webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .datepicker * {
 
 	/* box-sizing */
 	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
+	   -moz-box-sizing: content-box;
+			box-sizing: content-box;
 }
 
 .datepicker .tip {
@@ -100,7 +96,7 @@
 
 .datepicker .tip:before {
 
-	content: ' ';
+	content: '';
 	position: absolute;
 	left: -8px;
 	top: 2px;
@@ -183,25 +179,10 @@
 	float: right;
 }
 
-.datepicker .row.header .prev.disabled {
-
-	cursor: default;
-}
-
-.datepicker .row.header .next.disabled {
-
-	cursor: default;
-}
-
-.datepicker .row.header .prev.disabled .arrow {
-
-	border-right-color: #DDD;
-}
-
-.datepicker .row.header .next.disabled .arrow {
-
-	border-left-color: #DDD;
-}
+.datepicker .row.header .prev.disabled { cursor: default; }
+.datepicker .row.header .next.disabled { cursor: default; }
+.datepicker .row.header .prev.disabled .arrow { border-right-color: #DDD; }
+.datepicker .row.header .next.disabled .arrow { border-left-color: #DDD; }
 
 .datepicker .cell {
 
@@ -270,19 +251,10 @@
 	color: #FFF;
 }
 
-.datepicker .cell.grayed {
-
-	color: #CCC;
-}
-
-.datepicker .days .cell {
-
-
-	color: #555;
-}
+.datepicker .cell.grayed { color: #CCC; }
+.datepicker .days .cell { color: #555; }
 
 .datepicker .decades .cell span {
-
 
 	display: block;
 	padding: 5px 5px 0;
@@ -300,17 +272,11 @@
 
 .datepicker .decades,
 .datepicker .years,
-.datepicker .months {
-
-	display: none;
-}
+.datepicker .months { display: none; }
 
 .datepicker .decades .header,
 .datepicker .years .header,
-.datepicker .months .header {
-
-	margin-bottom: 13px;
-}
+.datepicker .months .header { margin-bottom: 13px; }
 
 /**
  * twitter-typeahead
@@ -318,59 +284,56 @@
  */
 
 span.twitter-typeahead .tt-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  list-style: none;
-  font-size: 14px;
-  text-align: left;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
-}
-span.twitter-typeahead .tt-suggestion > p {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #333333;
-  white-space: nowrap;
-}
-span.twitter-typeahead .tt-suggestion > p:hover,
-span.twitter-typeahead .tt-suggestion > p:focus {
-  color: #ffffff;
-  text-decoration: none;
-  outline: 0;
-  background-color: #428bca;
-}
-span.twitter-typeahead .tt-suggestion.tt-cursor {
-  color: #ffffff;
-  background-color: #428bca;
-}
-span.twitter-typeahead {
-  width: 100%;
-}
-.input-group span.twitter-typeahead {
-  display: block !important;
-}
-.input-group span.twitter-typeahead .tt-dropdown-menu {
-  top: 32px !important;
-}
-.input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
-  top: 44px !important;
-}
-.input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
-  top: 28px !important;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	list-style: none;
+	font-size: 14px;
+	text-align: left;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	background-clip: padding-box;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
+span.twitter-typeahead .tt-suggestion > p {
+
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333333;
+	white-space: nowrap;
+}
+
+span.twitter-typeahead .tt-suggestion > p:hover,
+span.twitter-typeahead .tt-suggestion > p:focus {
+
+	color: #ffffff;
+	text-decoration: none;
+	outline: 0;
+	background-color: #428bca;
+}
+
+span.twitter-typeahead .tt-suggestion.tt-cursor {
+
+	color: #ffffff;
+	background-color: #428bca;
+}
+
+span.twitter-typeahead { width: 100%; }
+.input-group span.twitter-typeahead { display: block !important; }
+.input-group span.twitter-typeahead .tt-dropdown-menu { top: 32px !important; }
+.input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu { top: 44px !important; }
+.input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu { top: 28px !important; }

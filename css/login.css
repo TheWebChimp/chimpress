@@ -5,32 +5,31 @@
 	/_/\____/\__, /_/_/ /_(_)___/____/____/
 			/____/
 
-==================================================================================================*/
+================================================================================================= */
 
-html, body{
+html,
+body{
 
 	background: url('../images/admin/chimpress-background.jpg') center top !important;
-	-webkit-background-size: cover;
-	   -moz-background-size: cover;
-		 -o-background-size: cover;
-			background-size: cover;
+	-webkit-background-size: cover !important;
+	   -moz-background-size: cover !important;
+		 -o-background-size: cover !important;
+			background-size: cover !important;
 }
 
 .login h1 a{
 
-	background-image: none, url("../images/admin/admin-logo.png");
-	background-size: auto auto;
-	height: 73px;
-	width: 238px;
+	background-image: none, url("../images/admin/admin-logo.png") !important;
+	background-size: auto auto !important;
+	height: 73px !important;
+	width: 238px !important;
 	margin-bottom: 10px;
 }
 
-#backtoblog, #nav {
+#backtoblog, #nav { text-align: center; }
 
-	text-align: center;
-}
-
-#nav a, #backtoblog a {
+#nav a,
+#backtoblog a {
 
 	color: white !important;
 	text-shadow: 0 0 2px rgba(0,0,0,0.5), 0 0 5px rgba(0,0,0,0.5);
