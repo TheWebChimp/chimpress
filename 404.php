@@ -11,8 +11,12 @@
 ?>
 <?php $site->getParts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
-<section>
-	<h2>Page not found</h2>
+<section class="section section-404">
+	<div class="inner boxfix boxfix-vert">
+		<div class="margins">
+			<h2>Page not found</h2>
+		</div>
+	</div>
 </section>
 
 <?php $site->getParts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
