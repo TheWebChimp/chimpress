@@ -9,14 +9,16 @@
  * @since 		Chimpress 1.0
  */
 ?>
-<?php $site->getParts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php $site->partial('header-html'); ?>
+	<?php $site->partial('header'); ?>
 
-<section class="section section-404">
-	<div class="inner boxfix boxfix-vert">
-		<div class="margins">
-			<h2>Page not found</h2>
+	<section class="section section-404">
+		<div class="inner boxfix boxfix-vert">
+			<div class="margins">
+				<h2>Page not found</h2>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<?php $site->getParts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+	<?php $site->partial('footer'); ?>
+<?php $site->partial('footer-html'); ?>

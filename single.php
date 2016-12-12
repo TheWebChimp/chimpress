@@ -9,22 +9,24 @@
  * @since 		Chimpress 1.0
  */
 ?>
-<?php $site->getParts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php $site->partial('header-html'); ?>
+	<?php $site->partial('header'); ?>
 
-<section class="section section-single">
-	<div class="inner boxfix boxfix-vert">
-		<div class="margins">
-			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+		<section class="section section-single">
+			<div class="inner boxfix boxfix-vert">
+				<div class="margins">
+					<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-				<article>
-					<h2><?php the_title(); ?></h2>
-					<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-					<?php the_content(); ?>
-				</article>
+						<article>
+							<h2><?php the_title(); ?></h2>
+							<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
+							<?php the_content(); ?>
+						</article>
 
-			<?php endwhile; ?>
-		</div>
-	</div>
-</section>
+					<?php endwhile; ?>
+				</div>
+			</div>
+		</section>
 
-<?php $site->getParts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+	<?php $site->partial('footer'); ?>
+<?php $site->partial('footer-html'); ?>

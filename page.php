@@ -14,17 +14,19 @@
  * @since 		Chimpress 1.0
  */
 ?>
-<?php $site->getParts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php $site->partial('header-html'); ?>
+	<?php $site->partial('header'); ?>
 
-<section class="section section-page">
-	<div class="inner boxfix boxfix-vert">
-		<div class="margins">
-			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-				<h2><?php the_title(); ?></h2>
-				<?php the_content(); ?>
-			<?php endwhile; ?>
+	<section class="section section-page">
+		<div class="inner boxfix boxfix-vert">
+			<div class="margins">
+				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+					<h2><?php the_title(); ?></h2>
+					<?php the_content(); ?>
+				<?php endwhile; ?>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<?php $site->getParts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+	<?php $site->partial('footer'); ?>
+<?php $site->partial('footer-html'); ?>
