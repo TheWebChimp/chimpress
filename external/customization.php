@@ -15,6 +15,16 @@
 
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
+	add_theme_support('post-formats', array(
+		'aside',
+		'gallery',
+		'link',
+		'image',
+		'quote',
+		'status',
+		'video',
+		'audio'
+	));
 
 	/* =============================================================================================
 	Menus
@@ -202,25 +212,31 @@
 		echo "\n\t\t";
 		$metas = array();
 
-		$metas[] = '<meta property="fb:admins" content="535258781">';
-		$metas[] = '<meta property="og:title" content="' . get_the_title() . '">';
-		$metas[] = '<meta property="og:type" content="article">';
-		$metas[] = '<meta property="og:url" content="' . get_permalink() . '">';
-		$metas[] = '<meta property="og:site_name" content="' . get_bloginfo('name') . '">';
+		$metas['fbadmin'] = '<meta property="fb:admins" content="535258781">';
+		$metas['og_title'] = '<meta property="og:title" content="' . get_the_title() . '">';
+		$metas['og_type'] = '<meta property="og:type" content="article">';
+		$metas['og_url'] = '<meta property="og:url" content="' . get_permalink() . '">';
+		$metas['og_site_name'] = '<meta property="og:site_name" content="' . get_bloginfo('name') . '">';
 
 		$default_image = $site->img('default-image.jpg', false);
 
-		if ( ! is_singular() || is_home() ) {
-			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
-		}
+		if(is_home()) {
 
-		else if ( ! has_post_thumbnail( $post->ID ) ) {
-			$metas[] = '<meta property="og:image" content="' . $default_image . '">';
-		}
+			$metas['og_image'] = '<meta property="og:image" content="' . $default_image . '">';
+			$metas['og_title'] = '<meta property="og:site_name" content="' . get_bloginfo('name') . '">';
 
-		else {
+		} else if ( ! is_singular() || is_home() ) {
+
+			$metas['og_image'] = '<meta property="og:image" content="' . $default_image . '">';
+
+		} else if ( ! has_post_thumbnail( $post->ID ) ) {
+
+			$metas['og_image'] = '<meta property="og:image" content="' . $default_image . '">';
+
+		} else {
 			$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-			$metas[] = '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '">';
+			$metas['og_image'] = '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '">';
+			$metas['og_title'] = '<meta property="og:site_name" content="' . get_bloginfo('name') . '">';
 		}
 
 		echo implode("\n\t\t", $metas);
@@ -235,6 +251,7 @@
 
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page();
+		acf_add_options_sub_page('Opciones Generales');
 	}
 
 	/* =============================================================================================
@@ -282,7 +299,7 @@
 		$match_pattern = '/\.less$/U';
 		if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
 
-			if( include_once (get_template_directory() . '/lib/lessc.inc.php') ) {
+			if( include_once (get_template_directory() . '/external/lib/lessc.inc.php') ) {
 
 				$src = $wp_styles->registered[$handle]->src;
 				$path = substr($src, 0, strrpos($src, '/'));

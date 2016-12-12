@@ -37,7 +37,7 @@
 	e.g. require_once( 'custom-post-types/your-custom-post-type.php' );
 	============================================================================================= */
 
-	//require_once( 'custom-post-types/your-custom-post-type.php' );
+	//require_once( 'external/custom-post-types/your-custom-post-type.php' );
 
 	/* =============================================================================================
 	Scripts
@@ -55,10 +55,10 @@
 		#CSS =======================================================================================
 
 		#Base
-		wp_enqueue_style( 'reset', get_stylesheet_directory_uri().'/css/reset.css', '', '', 'screen' );
+		wp_enqueue_style( 'reset', get_stylesheet_directory_uri().'/assets/styles/reset.css', '', '', 'screen' );
 
 		#Chimp Plugins
-		wp_enqueue_style( 'jquery.plugins', get_stylesheet_directory_uri().'/css/plugins/jquery.plugins.css', '', '', 'screen' );
+		wp_enqueue_style( 'jquery.plugins', get_stylesheet_directory_uri().'/assets/styles/plugins/jquery.plugins.css', '', '', 'screen' );
 
 		#Other Plugins
 
@@ -67,31 +67,31 @@
 
 		wc_enqueue_google_fonts(array(
 			'Open Sans' => array(400,300,700,800,'800italic','400italic','300italic'),
-			'Open Sans Condensed' => array(300,700,'300italic'),
-			'Oswald' => array(400,700,300),
-			'Lato' => array(400,300,700,900)
+			//'Open Sans Condensed' => array(300,700,'300italic'),
+			//'Oswald' => array(400,700,300),
+			//'Lato' => array(400,300,700,900)
 		));
 
 		if(DEV_PROFILE == 'development') {
 
-			wp_enqueue_style('project', get_stylesheet_directory_uri().'/css/project.less', '', '', 'screen');
+			wp_enqueue_style('project', get_stylesheet_directory_uri().'/assets/styles/project.less', '', '', 'screen');
 
 		} else if(DEV_PROFILE == 'production') {
 
-			wp_enqueue_style('project', get_stylesheet_directory_uri().'/css/project.css', '', '', 'screen');
+			wp_enqueue_style('project', get_stylesheet_directory_uri().'/assets/styles/project.css', '', '', 'screen');
 		}
 
 		#JS ========================================================================================
 
 		#Class
-		wp_register_script('class.js', get_template_directory_uri().'/js/class.js');
+		wp_register_script('class.js', get_template_directory_uri().'/assets/scripts/class.js');
 
 		#Chimp Scripts
-		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/js/plugins.js', array('jquery') );
+		wp_register_script( 'chimp.plugins', get_template_directory_uri().'/assets/scripts/plugins.js', array('jquery') );
 
 		#Other Scripts
 
-		wp_register_script('site', get_template_directory_uri().'/js/site.js', array(
+		wp_register_script('site', get_template_directory_uri().'/assets/scripts/site.js', array(
 
 			'class.js',
 
