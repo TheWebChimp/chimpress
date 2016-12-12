@@ -62,7 +62,7 @@
 		 * @return string            The resulting url
 		 */
 		function img( $filename, $echo = true ) {
-			$ret = get_bloginfo('template_url') . "/images/{$filename}";
+			$ret = get_bloginfo('template_url') . "/assets/images/{$filename}";
 			if ($echo) {
 				echo $ret;
 			}
@@ -120,6 +120,40 @@
 			$markup = str_replace('{$message}', $message, $markup);
 			echo $markup;
 			exit;
+		}
+
+		/**
+		 * Load the specified template part
+		 * @param  mixed $mixed An string or array of parts
+		 */
+		function partial($partial, $data = array(), $dir = null) {
+
+			if ( is_array($partial) ) {
+				foreach ($partial as $p) {
+					$this->partial($p, $data, $dir);
+				}
+			} else {
+				$dir = $dir ? $dir : get_template_directory() . '/templates/partials';
+				$div = strrpos($partial, '/');
+				$path = substr($partial, 0, $div);
+				$file = substr($partial, ++$div);
+				$partial = $path ? "{$path}/_{$file}" : "_{$file}";
+				$include = sprintf('%s/%s.php', $dir, $partial);
+				# Check whether the template exists or not
+				if ( file_exists($include) ) {
+					# Expand data
+					extract($data, EXTR_SKIP);
+					# Import globals
+					extract($GLOBALS, EXTR_REFS | EXTR_SKIP);
+					# Hide function parameters
+					unset($data);
+					unset($partial);
+					# Include file
+					include $include;
+				} else {
+					$this->errorMessage("View error: partial '{$partial}' does not exist");
+				}
+			}
 		}
 
 		/**

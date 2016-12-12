@@ -18,7 +18,7 @@
 	 * @param 	string
 	 * @return 	void
 	 */
-	function wc_enqueue_dev_styles( $dir = '/css/src/' ) {
+	function wc_enqueue_dev_styles( $dir = 'assets/styles/src/' ) {
 		if ($handle = opendir(get_template_directory() . $dir) ) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != "..") {
